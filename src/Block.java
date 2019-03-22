@@ -4,8 +4,10 @@ import java.awt.event.ActionListener;
 
 public class Block extends JButton implements ActionListener {
     ImageIcon tick,cross, none;
+    TicTacToe controller;
     byte value=0;
-    public Block(){
+    public Block(JFrame controller){
+        this.controller=(TicTacToe) controller;
         tick=new ImageIcon(this.getClass().getResource("tick.png"));
         cross=new ImageIcon(this.getClass().getResource("cancel.png"));
         none=new ImageIcon(this.getClass().getResource("none.png"));
@@ -14,8 +16,7 @@ public class Block extends JButton implements ActionListener {
     }
     public void actionPerformed(ActionEvent e){
         int n=Integer.parseInt(this.getName());
-        System.out.println(n);
-        TicTacToe.move(n);
+        controller.move(n);
         this.setEnabled(false);
     }
     public void changeIcon(int player){
