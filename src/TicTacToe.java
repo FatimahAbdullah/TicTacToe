@@ -51,21 +51,22 @@ public class TicTacToe extends JFrame{
         buttons[n].changeIcon(player);
         boolean check=gameBoard.check();
         boolean tie=gameBoard.checkTie();
+        System.out.println(check);
         if(check){
             String str=String.format("Player %d WON!", player);
-            endingTasks(str);
+            System.out.println(str);
+            status.setText(str);
+            status.setForeground(Color.RED);
+            disableButtons();
         }
         else if(tie){
-            String str="Game DRAW!";
-            endingTasks(str);
+            System.out.println("Game TIED!");
+            status.setText("Game TIED!");
+            status.setForeground(Color.RED);
+            disableButtons();
         }
     }
-    private void endingTasks(String str){
-        status.setText(str);
-        status.setForeground(Color.RED);
-        playerTurn.setText("GAME OVER");
-        playerTurn.setForeground(Color.RED);
-        //disabling buttons
+    private void disableButtons(){
         for(int i=0; i<9;i++){
             buttons[i].setEnabled(false);
         }

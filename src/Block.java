@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 public class Block extends JButton implements ActionListener {
     ImageIcon tick,cross, none;
     TicTacToe controller;
+    byte value=0;
     public Block(JFrame controller){
         this.controller=(TicTacToe) controller;
         tick=new ImageIcon(this.getClass().getResource("tick.png"));
